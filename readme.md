@@ -31,3 +31,15 @@ The following topics will be considered:
 - Code clarity and maintainability
 - Performance
 - Resilience
+
+## Solution
+
+With postman: 
+
+####http://localhost:5000/product/2/similar
+
+![Diagram](./assets/microProduct.bmp "Product")
+
+####http://localhost:3001/product/1/similarids
+
+![Diagram](./assets/microSimilar.bmp "Similar")
