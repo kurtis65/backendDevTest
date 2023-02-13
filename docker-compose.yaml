@@ -33,3 +33,16 @@ services:
       - K6_OUT=influxdb=http://influxdb:8086/k6
     extra_hosts:
       - "host.docker.internal:host-gateway"
+  similar_products:
+    depends_on:
+      - simulado
+    build:
+      context: ./
+      dockerfile: ./DockerFile
+    ports:
+      - "5000:5000"
+    environment:
+      - SERVER_PORT=5000
+      - SIMILAR_URL=http://host.docker.internal:3001
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.openapitools.model.ProductDetail;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Objects;
@@ -27,7 +28,8 @@ public class ProductServiceImpl implements ProductService {
 
         Set<String> productSimilarIds = similarProductsApiClient.getProductSimilarIds(productId);
 
-        if (Objects.isNull(productSimilarIds)) {
+        if (Objects.isNull(productSimilarIds) ||
+                CollectionUtils.isEmpty(productSimilarIds)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
